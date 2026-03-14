@@ -1,7 +1,5 @@
 package seedu.FitLogger;
 
-import java.time.LocalDate;
-
 public class FitLogger {
     private Ui ui;
     private Parser parser;
