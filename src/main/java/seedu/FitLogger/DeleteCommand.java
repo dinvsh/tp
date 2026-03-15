@@ -36,7 +36,8 @@ public class DeleteCommand extends Command {
     @Override
     public void execute(Ui ui) {
         if (workoutName == null || workoutName.isBlank()) {
-            ui.temporaryOutput("Please specify a workout to delete. Usage: delete workout <WORKOUT_NAME> or delete <index>");
+            ui.temporaryOutput("Please specify a workout to delete. "
+                    + "Usage: delete workout <WORKOUT_NAME> or delete <index>");
             return;
         }
 
@@ -106,3 +107,4 @@ public class DeleteCommand extends Command {
         return -1;
     }
 }
+
