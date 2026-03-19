@@ -12,15 +12,14 @@ public class Ui {
     }
 
     public void showWelcome() {
-        String logo =
-                " ______   _   _                                 \n" +
-                        "|  ____(_) | | |                                \n" +
-                        "| |__   _| |_| |     ___   __ _  __ _  ___ _ __  \n" +
-                        "|  __| | | __| |    / _ \\ / _` |/ _` |/ _ \\ '__| \n" +
-                        "| |    | | |_| |___| (_) | (_| | (_| |  __/ |    \n" +
-                        "|_|    |_|\\__|______\\___/ \\__, |\\__, |\\___|_|    \n" +
-                        "                           __/ | __/ |           \n" +
-                        "                          |___/ |___/            ";
+        String logo = " ______   _   _                                 \n" +
+                "|  ____(_) | | |                                \n" +
+                "| |__   _| |_| |     ___   __ _  __ _  ___ _ __  \n" +
+                "|  __| | | __| |    / _ \\ / _` |/ _` |/ _ \\ '__| \n" +
+                "| |    | | |_| |___| (_) | (_| | (_| |  __/ |    \n" +
+                "|_|    |_|\\__|______\\___/ \\__, |\\__, |\\___|_|    \n" +
+                "                           __/ | __/ |           \n" +
+                "                          |___/ |___/            ";
         System.out.println(logo);
         System.out.println(LINE);
         System.out.println("Welcome to FitLogger!");
@@ -33,5 +32,11 @@ public class Ui {
 
     public void temporaryOutput(String command) {
         System.out.println(command);
+    }
+
+    public void showHelpMenu() {
+        String helpMessage = "Command Guide:\n"
+                + "    help   List available commands\n";
+        System.out.println(helpMessage);
     }
 }
