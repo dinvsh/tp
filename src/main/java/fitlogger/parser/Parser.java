@@ -18,7 +18,7 @@ public class Parser {
 
     public static Command parse(String fullCommand, WorkoutList workouts, Storage storage)
             throws FitLoggerException {
-        logger.log(Level.INFO, "going to start parsing");
+        //logger.log(Level.INFO, "going to start parsing");
         assert fullCommand != null : "Parser.parse was called with a null string!";
         String[] parts = fullCommand.trim().split(" ", 2);
         String commandWord = parts[0].toLowerCase();
