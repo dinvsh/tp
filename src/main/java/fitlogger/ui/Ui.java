@@ -37,7 +37,10 @@ public class Ui {
     }
 
     public void showHelpMenu() {
-        String helpMessage = "Command Guide:\n" + "    help   List available commands\n";
+        String helpMessage = "Command Guide:\n" + "    help: List available commands\n"
+                + "    delete workout <WORKOUT_NAME>: Delete workout by name\n"
+                + "    delete workout <index>: Delete workout by index\n"
+                + "    history: View saved workouts\n" + "    exit: Close FitLogger";
         System.out.println(helpMessage);
     }
 
