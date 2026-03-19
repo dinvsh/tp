@@ -38,22 +38,9 @@ public class Parser {
 
         case "add-run":
             assert parts[1] != null : "Description is missing";
-            String[] runInfo = splitInput(parts[1], "([dt])/([\\d.]+)", 0);
-            double duration = 0;
-            double distance = 0;
-            for (String runDetails : runInfo) {
-                String[] runDetail = splitInput(runDetails, "/", 2);
-                assert runDetail[2] == null;
-                assert !runDetail[1].contains("/");
-                assert runDetail[1].matches("\\d+(\\.\\d+)?") : "Expected a number but got: " + runDetail[1];
-                assert runDetail[0].matches("[dt]");
-                if (runDetail[0] == "t") {
-                    duration = Integer.valueOf(runDetail[1]);
-                    continue;
-                }
-                distance = Integer.valueOf(runDetail[1]);
-            }
-            Workout runToBeAdded = new RunWorkout(runInfo[0], LocalDate.now(), distance, duration);
+            String[] runInfo = splitInput(parts[1], "d/|t/", 3);
+            Workout runToBeAdded = new RunWorkout(runInfo[0], LocalDate.now(),
+                    Double.parseDouble(runInfo[1]), Double.parseDouble(runInfo[2]));
             return new AddWorkoutCommand(workouts, runToBeAdded);
 
         // case "help":
