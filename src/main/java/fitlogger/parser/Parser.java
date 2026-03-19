@@ -3,6 +3,8 @@ package fitlogger.parser;
 import fitlogger.command.Command;
 import fitlogger.command.DeleteCommand;
 import fitlogger.command.ExitCommand;
+import fitlogger.command.HelpCommand;
+import fitlogger.command.ViewHistoryCommand;
 import fitlogger.exception.FitLoggerException;
 import fitlogger.workoutlist.WorkoutList;
 import fitlogger.storage.Storage;
@@ -18,7 +20,7 @@ public class Parser {
 
     public static Command parse(String fullCommand, WorkoutList workouts, Storage storage)
             throws FitLoggerException {
-        //logger.log(Level.INFO, "going to start parsing");
+        // logger.log(Level.INFO, "going to start parsing");
         assert fullCommand != null : "Parser.parse was called with a null string!";
         String[] parts = fullCommand.trim().split(" ", 2);
         String commandWord = parts[0].toLowerCase();
@@ -31,8 +33,11 @@ public class Parser {
         case "exit":
             return new ExitCommand(storage, workouts);
 
-        // case "help":
-        // return new HelpCommand();
+        case "help":
+            return new HelpCommand();
+
+        case "history":
+            return new ViewHistoryCommand(workouts);
 
         default:
             throw new FitLoggerException("I'm sorry, I don't know what '" + commandWord
