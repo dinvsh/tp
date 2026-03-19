@@ -1,26 +1,26 @@
-package seedu.fitlogger;
+package fitlogger.storage;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import seedu.fitlogger.workout.Workout;
+import fitlogger.workout.Workout;
 
 /**
- * Handles persistence of workout data to and from the file system.
+ * Handles persistence of FitLogger.command.workout data to and from the file system.
  * Workout entries are stored in a plain-text file, one entry per line,
- * using each workout's {@code toFileFormat()} representation.
+ * using each FitLogger.command.workout's {@code toFileFormat()} representation.
  */
 public class Storage {
 
-    /** Path to the file where workout data is persisted. */
+    /** Path to the file where FitLogger.command.workout data is persisted. */
     private static final String FILE_PATH = "data/fitlogger.txt";
 
     /**
      * Saves all workouts in the provided list to {@code data/fitlogger.txt}.
      * The parent directory is created automatically if it does not exist.
-     * Each workout is written on its own line using {@link Workout#toFileFormat()}.
+     * Each FitLogger.command.workout is written on its own line using {@link Workout#toFileFormat()}.
      *
      * @param workouts The list of {@link Workout} objects to persist.
      */

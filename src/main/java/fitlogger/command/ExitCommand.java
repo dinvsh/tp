@@ -1,20 +1,20 @@
-package seedu.fitlogger.command;
+package fitlogger.command;
 
-import seedu.fitlogger.Storage;
-import seedu.fitlogger.Ui;
-import seedu.fitlogger.workout.WorkoutList;
+import fitlogger.storage.Storage;
+import fitlogger.ui.Ui;
+import fitlogger.workoutlist.WorkoutList;
 
 /**
- * Command that saves current workout data and exits the application.
+ * Command that saves current FitLogger.command.workout data and exits the application.
  */
 public class ExitCommand extends Command {
     private final Storage storage;
     private final WorkoutList workouts;
 
     /**
-     * Creates an {@code ExitCommand} that persists the current workout list before exit.
+     * Creates an {@code ExitCommand} that persists the current FitLogger.command.workout list before exit.
      *
-     * @param storage Storage handler used to save workout data.
+     * @param storage FitLogger.command.Storage handler used to save FitLogger.command.workout data.
      * @param workouts Workout list to be saved.
      */
     public ExitCommand(Storage storage, WorkoutList workouts) {
@@ -23,7 +23,7 @@ public class ExitCommand extends Command {
     }
 
     /**
-     * Saves workout data and displays a goodbye message to the user.
+     * Saves FitLogger.command.workout data and displays a goodbye message to the user.
      *
      * @param ui UI used to display output messages.
      */

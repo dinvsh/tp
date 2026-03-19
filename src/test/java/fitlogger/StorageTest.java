@@ -1,5 +1,6 @@
-package seedu.fitlogger;
+package fitlogger;
 
+import fitlogger.storage.Storage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +15,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import seedu.fitlogger.workout.Running;
-import seedu.fitlogger.workout.Workout;
+import fitlogger.workout.Running;
+import fitlogger.workout.Workout;
 
 class StorageTest {
 
@@ -43,7 +44,7 @@ class StorageTest {
         storage.saveData(emptyList);
 
         File file = new File(FILE_PATH);
-        assertTrue(file.exists(), "File should be created even for empty workout list");
+        assertTrue(file.exists(), "File should be created even for empty FitLogger.command.workout list");
         assertEquals(0, file.length(), "File should be empty when no workouts saved");
     }
 

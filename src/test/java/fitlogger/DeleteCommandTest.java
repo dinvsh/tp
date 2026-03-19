@@ -1,4 +1,4 @@
-package seedu.fitlogger;
+package fitlogger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -8,9 +8,9 @@ import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.fitlogger.command.DeleteCommand;
-import seedu.fitlogger.workout.Running;
-import seedu.fitlogger.workout.WorkoutList;
+import fitlogger.command.DeleteCommand;
+import fitlogger.workout.Running;
+import fitlogger.workoutlist.WorkoutList;
 
 class DeleteCommandTest {
     @Test
@@ -25,7 +25,7 @@ class DeleteCommandTest {
 
         assertEquals(1, workouts.getSize());
         assertFalse(workouts.getWorkout(0).getDescription().equalsIgnoreCase("Squat"));
-        assertEquals("Deleted workout: Squat", ui.lastOutput);
+        assertEquals("Deleted FitLogger.command.workout: Squat", ui.lastOutput);
     }
 
     @Test
@@ -42,7 +42,7 @@ class DeleteCommandTest {
         assertEquals(2, workouts.getSize());
         assertFalse(workouts.getWorkout(0).getDescription().equalsIgnoreCase("Deadlift"));
         assertFalse(workouts.getWorkout(1).getDescription().equalsIgnoreCase("Deadlift"));
-        assertEquals("Deleted workout: Deadlift", ui.lastOutput);
+        assertEquals("Deleted FitLogger.command.workout: Deadlift", ui.lastOutput);
     }
 
     @Test
@@ -55,7 +55,7 @@ class DeleteCommandTest {
         command.execute(ui);
 
         assertTrue(workouts.getWorkout(0).getDescription().equals("Deadlift"));
-        assertEquals("Please specify a workout to delete. Usage: delete workout <WORKOUT_NAME> or delete <index>",
+        assertEquals("Please specify a FitLogger.command.workout to delete. Usage: delete FitLogger.command.workout <WORKOUT_NAME> or delete <index>",
             ui.lastOutput);
     }
 

@@ -1,16 +1,16 @@
-package seedu.fitlogger.workout;
+package fitlogger.workout;
 
 import java.time.LocalDate;
 
 /**
- * Represents a running workout.
+ * Represents a running FitLogger.command.workout.
  * Inherits from the Workout class and adds distance-specific tracking.
  */
 public class Running extends Workout {
     protected double distance;
 
     /**
-     * Initializes a new Running workout with distance, description, and date.
+     * Initializes a new Running FitLogger.command.workout with distance, description, and date.
      *
      * @param description A short summary of the run (e.g., "Interval training").
      * @param date        The date the run occurred.

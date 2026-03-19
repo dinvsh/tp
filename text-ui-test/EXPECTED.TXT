@@ -7,7 +7,7 @@
                            __/ | __/ |           
                           |___/ |___/            
 -----------------------------------------------------
-Welcome to FitLogger!
+Welcome to Fitlogger!
 Feel free to Add your own workout
 Workouts saved to data/fitlogger.txt
 Goodbye! See you at your next workout!
