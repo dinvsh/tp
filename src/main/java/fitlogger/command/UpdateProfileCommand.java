@@ -12,9 +12,9 @@ public class UpdateProfileCommand extends ProfileCommand{
 
     public UpdateProfileCommand(String newName, double newHeight, double newWeight) {
         this.newName = newName;
-        assert newHeight == -1 || newHeight >= 0;
+        assert newHeight == -1 || newHeight >= 0 : "Height is invalid";
         this.newHeight = newHeight;
-        assert newWeight == -1 || newWeight >= 0;
+        assert newWeight == -1 || newWeight >= 0 : "Weight is invalid";
         this.newWeight = newWeight;
     }
 
