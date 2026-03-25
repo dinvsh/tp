@@ -228,6 +228,7 @@ public class Parser {
                             + "Usage: profile view OR profile set <field> <value>");
         }
         String[] info = splitInput(arguments, " ", 3);
+        assert info.length > 0 : "Profile arguments are missing";
 
         try {
             switch (info[0]) {
