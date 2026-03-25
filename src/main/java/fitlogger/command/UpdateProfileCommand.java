@@ -7,12 +7,14 @@ import fitlogger.workoutlist.WorkoutList;
 
 public class UpdateProfileCommand extends ProfileCommand{
     private String newName;
-    private float newHeight;
-    private float newWeight;
+    private double newHeight;
+    private double newWeight;
 
-    public UpdateProfileCommand(String newName, float newHeight, float newWeight) {
+    public UpdateProfileCommand(String newName, double newHeight, double newWeight) {
         this.newName = newName;
+        assert newHeight == -1 || newHeight >= 0;
         this.newHeight = newHeight;
+        assert newWeight == -1 || newWeight >= 0;
         this.newWeight = newWeight;
     }
 

@@ -236,13 +236,20 @@ public class Parser {
                     throw new FitLoggerException("Field not provided. \n"
                             + "Available fields: name / height / weight");
                 }
+                assert !info[1].isEmpty();
+                assert !info[1].isBlank();
+
+                double updatedHeightOrWeight = -1;
+
                 switch (info[1]) {
                 case "name":
                     return new UpdateProfileCommand(info[2], -1, -1);
                 case "height":
-                    return new UpdateProfileCommand(null, Float.parseFloat(info[2]), -1);
+                    updatedHeightOrWeight = updateHeightOrWeight(info[2], 0.3, 3);
+                    return new UpdateProfileCommand(null, updatedHeightOrWeight, -1);
                 case "weight":
-                    return new UpdateProfileCommand(null, -1, Float.parseFloat(info[2]));
+                    updatedHeightOrWeight = updateHeightOrWeight(info[2], 10, 500);
+                    return new UpdateProfileCommand(null, -1, updatedHeightOrWeight);
                 default:
                     throw new FitLoggerException("Invalid field provided. \n"
                             + "Available fields: name / height / weight");
@@ -254,6 +261,18 @@ public class Parser {
         } catch (IndexOutOfBoundsException e) {
             throw new FitLoggerException("No value provided. \n"
                     + "Please provide a value to be updated.");
+        }
+    }
+
+    private static double updateHeightOrWeight(String value, double lowerBound, double upperBound)
+            throws FitLoggerException {
+        try {
+            double newValue = Float.parseFloat(value);
+            if (newValue < lowerBound || newValue > upperBound) {
+                throw new FitLoggerException("Your Height/Weight is too low/high.\n" +
+                        "Please ensure your values are correctly inputted");
+            }
+            return newValue;
         } catch (NumberFormatException e) {
             throw new FitLoggerException("Please provide a valid number for height/weight");
         }
