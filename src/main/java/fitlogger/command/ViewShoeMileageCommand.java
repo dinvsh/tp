@@ -12,6 +12,7 @@ public class ViewShoeMileageCommand extends Command {
         double totalMileage = 0;
         for (Workout workout : workouts.getWorkouts()) {
             if (workout instanceof RunWorkout run) {
+                assert run.getDistance() >= 0 : "Distance cannot be negative";
                 totalMileage += run.getDistance();
             }
         }
