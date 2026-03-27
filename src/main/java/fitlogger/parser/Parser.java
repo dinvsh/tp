@@ -1,5 +1,6 @@
 package fitlogger.parser;
 
+
 import fitlogger.command.AddWorkoutCommand;
 import fitlogger.command.Command;
 import fitlogger.command.DeleteCommand;
@@ -10,6 +11,7 @@ import fitlogger.command.UpdateProfileCommand;
 import fitlogger.command.ViewDatabaseCommand;
 import fitlogger.command.ViewHistoryCommand;
 import fitlogger.command.ViewProfileCommand;
+import fitlogger.command.ViewShoeMileageCommand;
 import fitlogger.exception.FitLoggerException;
 import fitlogger.workout.RunWorkout;
 import fitlogger.workout.StrengthWorkout;
@@ -37,6 +39,9 @@ public class Parser {
 
         case "profile":
             return parseProfile(arguments);
+
+        case "view-total-mileage":
+            return new ViewShoeMileageCommand();
 
         case "edit":
             return parseEdit(arguments, workouts);
@@ -305,7 +310,7 @@ public class Parser {
     private static double updateHeightOrWeight(String value, double lowerBound, double upperBound)
             throws FitLoggerException {
         try {
-            double newValue = Float.parseFloat(value);
+            double newValue = Double.parseDouble(value);
             if (newValue < lowerBound || newValue > upperBound) {
                 throw new FitLoggerException("Your Height/Weight is too low/high.\n" +
                         "Please ensure your values are correctly inputted");
