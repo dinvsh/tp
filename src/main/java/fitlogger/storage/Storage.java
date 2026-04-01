@@ -159,12 +159,15 @@ public class Storage {
         String[] heightData = Parser.splitInput(weightData[0], "height: ", 2);
         String[] nameData = Parser.splitInput(heightData[0], "name: ", 2);
 
-        //no errors in storage
+        double height = Double.parseDouble(heightData[1].trim());
+        double weight = Double.parseDouble(weightData[1].trim());
+
+        //errors in double values handled above, errors in name handled with if statement
         if (!nameData[1].trim().equals("null")) {
             profile.setName(nameData[1].trim());
         }
-        profile.setHeight(Double.parseDouble(heightData[1].trim()));
-        profile.setWeight(Double.parseDouble(weightData[1].trim()));
+        profile.setHeight(height);
+        profile.setWeight(weight);
     }
 
     /**

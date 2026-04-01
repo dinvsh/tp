@@ -328,7 +328,7 @@ public class Parser {
         assert info.length > 0 : "Profile arguments are missing";
 
         try {
-            switch (info[0]) {
+            switch (info[0].toLowerCase()) {
             case "view":
                 //ignores all entries after it
                 return new ViewProfileCommand();
@@ -342,7 +342,7 @@ public class Parser {
 
                 double updatedHeightOrWeight = -1;
 
-                switch (info[1]) {
+                switch (info[1].toLowerCase()) {
                 case "name":
                     return new UpdateProfileCommand(info[2], -1, -1);
                 case "height":
