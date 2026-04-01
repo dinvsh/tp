@@ -49,22 +49,22 @@ public class Ui {
 
     public void showHelpMenu() {
         String helpMessage = "Command Guide:\n"
-                + "    help                                       List available commands\n"
-                + "    profile view                               View your profile\n"
-                + "    profile set <field> <value>                Update your profile. "
-                + "Available fields: name/weight/height \n"
-                + "    add-run <n> d/<dist> t/<mins>              Log a run\n"
-                + "    add-lift <n> w/<kg> s/<sets> r/<reps>      Log a lift workout\n"
-                + "    edit <index> <field>/<value>               "
+                + "    help                                           List available commands\n"
+                + "    profile view                                   View your profile\n"
+                + "    profile set <field> <value>                    Update your profile. "
+                + "Available fields: name / weight / height \n"
+                + "    add-run <name_or_id> d/<distKm> t/<mins>       Log a run\n"
+                + "    add-lift <name_or_id> w/<kg> s/<sets> r/<reps> Log a lift workout\n"
+                + "    edit <index> <field>/<value>                   "
                 + "Edit field: name/description/weight/sets/reps/distance/duration\n"
-                + "    view-database                              View exercise shortcuts and their IDs\n"
-                + "    add-shortcut <lift/run> <ID> <name>        Add a custom exercise shortcut\n"
-                + "    view-total-mileage                         View total distance ran across all run workouts\n"
-                + "    lastlift <EXERCISE_NAME>                   View most recent lift for an exercise\n"
-                + "    history                                    View all logged workouts\n"
-                + "    delete <index>                             Delete workout by number\n"
-                + "    delete <name>                              Delete workout by name\n"
-                + "    exit                                       Save and close FitLogger";
+                + "    view-database                                  View exercise shortcuts and their IDs\n"
+                + "    add-shortcut <lift/run> <ID> <name>            Add a custom exercise shortcut\n"
+                + "    view-total-mileage                             View total distance ran across all run workouts\n"
+                + "    lastlift <EXERCISE_NAME>                       View most recent lift for an exercise\n"
+                + "    history                                        View all logged workouts\n"
+                + "    delete <index>                                 Delete workout by number\n"
+                + "    delete <name>                                  Delete workout by name\n"
+                + "    exit                                           Save and close FitLogger";
         showMessage(helpMessage);
     }
 
@@ -105,6 +105,24 @@ public class Ui {
         showMessage("  Weight : " + lift.getWeight() + "kg");
         showMessage("  Sets   : " + lift.getSets());
         showMessage("  Reps   : " + lift.getReps());
+        showLine();
+    }
+
+    public void showProfile(String name, double height, double weight) {
+        showLine();
+        showMessageNoNewline("Name: ");
+        String nameToDisplay = (name == null) ? "name not set yet" : name;
+        showMessage(nameToDisplay);
+
+        showMessageNoNewline("Height: ");
+        String heightToDisplay = (height == -1) ?
+                "height not set yet" : String.format("%.2f", height) + "m";
+        showMessage(heightToDisplay);
+
+        showMessageNoNewline("Weight: ");
+        String weightToDisplay = (weight == -1) ?
+                "weight not set yet" : String.format("%.2f", weight) + "kg";
+        showMessage(weightToDisplay);
         showLine();
     }
 }
