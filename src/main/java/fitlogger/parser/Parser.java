@@ -21,6 +21,7 @@ import fitlogger.workout.Workout;
 import fitlogger.workoutlist.WorkoutList;
 import fitlogger.exercisedictionary.ExerciseDictionary;
 
+import java.io.FileReader;
 import java.time.LocalDate;
 
 public class Parser {
@@ -93,7 +94,7 @@ public class Parser {
             throws FitLoggerException {
         if (arguments.isBlank()) {
             throw new FitLoggerException("Missing arguments for add-run.\n"
-                    + "Usage: add-run <name_or_id> d/<distance> t/<durationMinutes>");
+                    + "Usage: add-run <name_or_id> d/<distanceKm> t/<durationMinutes>");
         }
 
         String[] runInfo = splitInput(arguments, "d/|t/", 3);
@@ -123,6 +124,13 @@ public class Parser {
         double distance;
         double durationMinutes;
         try {
+            //check if d/comes before t/
+            String[] checkDataIntegrity = splitInput(arguments.trim(), "d/", 0);
+            if (checkDataIntegrity[0].contains("t/")) {
+                throw new FitLoggerException("Invalid format for add-run.\n"
+                        + "Usage: add-run <name_or_id> d/<distance> t/<durationMinutes>");
+            }
+
             distance = Double.parseDouble(runInfo[1].trim());
             durationMinutes = Double.parseDouble(runInfo[2].trim());
         } catch (NumberFormatException e) {
@@ -192,6 +200,12 @@ public class Parser {
         int sets;
         int reps;
         try {
+            //check if correct order
+            String[] checkDataIntegrity = splitInput(arguments.trim(), "s/", 2);
+            if (!checkDataIntegrity[0].contains("w/") || !checkDataIntegrity[1].contains("r/")) {
+                throw new FitLoggerException("Invalid format for add-lift.\n"
+                        + "Usage: add-lift <name_or_id> w/<weightKg> s/<sets> r/<reps>");
+            }
             weight = Double.parseDouble(info[1].trim());
             sets = Integer.parseInt(info[2].trim());
             reps = Integer.parseInt(info[3].trim());
