@@ -101,7 +101,7 @@ public class Parser {
 
         if (runInfo.length < 3) {
             throw new FitLoggerException("Invalid format for add-run.\n"
-                    + "Usage: add-run <name_or_id> d/<distance> t/<durationMinutes>");
+                    + "Usage: add-run <name_or_id> d/<distanceKm> t/<durationMinutes>");
         }
 
         String name = runInfo[0].trim();
@@ -128,14 +128,14 @@ public class Parser {
             String[] checkDataIntegrity = splitInput(arguments.trim(), "d/", 0);
             if (checkDataIntegrity[0].contains("t/")) {
                 throw new FitLoggerException("Invalid format for add-run.\n"
-                        + "Usage: add-run <name_or_id> d/<distance> t/<durationMinutes>");
+                        + "Usage: add-run <name_or_id> d/<distanceKm> t/<durationMinutes>");
             }
 
             distance = Double.parseDouble(runInfo[1].trim());
             durationMinutes = Double.parseDouble(runInfo[2].trim());
         } catch (NumberFormatException e) {
             throw new FitLoggerException("Distance and duration must be valid numbers.\n"
-                    + "Usage: add-run <name> d/<distance> t/<durationMinutes>");
+                    + "Usage: add-run <name> d/<distanceKm> t/<durationMinutes>");
         }
 
         if (distance <= 0) {
@@ -370,8 +370,8 @@ public class Parser {
         try {
             double newValue = Double.parseDouble(value);
             if (newValue < lowerBound || newValue > upperBound) {
-                throw new FitLoggerException("Your Height/Weight is too low/high.\n" +
-                        "Please ensure your values are correctly inputted");
+                throw new FitLoggerException("Your Height/Weight is unrealistically low/high.\n" +
+                        "Please ensure your values are correctly, height in m and weight in Kg");
             }
             return newValue;
         } catch (NumberFormatException e) {
